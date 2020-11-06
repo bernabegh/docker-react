@@ -1,0 +1,20 @@
+version: '3'
+services: 
+    web:
+        #build: . #When "build ." is specified, a default Dockerfile there has to exist in the project
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        ports: 
+            - "3000:3000"
+        volumes:
+            - /app/node_modules
+            - .:/app # Here we are mapping the current local folder(.) to the /app folder in the container
+    tests:
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /app/node_modules
+            - .:/app
+        command: ["npm", "run", "test"]
