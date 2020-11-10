@@ -1,4 +1,4 @@
-gitlanguage: generic
+language: generic
 
 services:
   - docker
